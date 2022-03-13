@@ -76,9 +76,9 @@ def checkIfSlotAvailableForParticipant(request):
     slot_end_ts = data["slot_end_ts"]
 
     for interview in interviewListOfUser:
-        if slot_start_ts < interview.startTime and slot_end_ts < interview.endTime:
+        if slot_start_ts < interview.startTime and slot_end_ts < interview.startTime:
             return Response(data={"status": True}, status=status.HTTP_200_OK)
-        elif slot_start_ts > interview.startTime and slot_end_ts > interview.endTime:
+        elif slot_start_ts > interview.endTime:
             return Response(data={"status": True}, status=status.HTTP_200_OK)
     
     return Response(data={"status": False}, status=status.HTTP_200_OK)
